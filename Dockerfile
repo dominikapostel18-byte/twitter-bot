@@ -1,18 +1,14 @@
-# Używamy oficjalnego obrazu Ollama + Pythona
-FROM ollama/ollama:latest
+# Użyj obrazu Python
+FROM python:3.10-slim
 
-# Instalacja Pythona
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Skopiuj pliki bota do kontenera
+# Ustaw katalog roboczy
 WORKDIR /app
-COPY . /app
 
-# Zainstaluj wymagania
-RUN pip3 install -r requirements.txt
+# Skopiuj pliki z repo do kontenera
+COPY . .
 
-# Załaduj model (np. llama3)
-RUN ollama pull llama3
+# Zainstaluj wymagane biblioteki
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Uruchom Ollamę w tle i potem bota
-CMD ollama serve & sleep 5 && python3 bot.py
+# Uruchom bota
+CMD ["python", "bot.py"]
