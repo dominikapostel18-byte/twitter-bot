@@ -9,7 +9,7 @@ TWEET_URL = "https://api.twitter.com/2/tweets"
 TOKENS_FILE = "tokens.json"
 
 # 🔥 ścieżka do folderu stylów
-STYLES_DIR = os.path.join(os.getcwd(), "styles")
+STYLES_DIR = "."
 
 
 def load_tokens():
