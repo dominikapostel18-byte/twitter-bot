@@ -59,8 +59,14 @@ Now generate one new line in the same style:
     response = requests.post(DEEPINFRA_API_URL, headers=headers, json=data)
     result = response.json()
 
-    # Odczytaj tekst modelu
-    tweet = result["results"][0]["generated_text"].strip()
+    # Sprawdź różne możliwe formaty odpowiedzi DeepInfra
+    if "results" in result:
+        tweet = result["results"][0]["generated_text"].strip()
+    elif "output_text" in result:
+        tweet = result["output_text"].strip()
+    else:
+        print("⚠️ Nieoczekiwana odpowiedź z API:", result)
+        tweet = "Keep building. Keep moving. Keep winning."
 
     # usuń cudzysłowy i kropkę na końcu
     tweet = tweet.replace('"', '').replace("'", "")
