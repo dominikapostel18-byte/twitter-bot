@@ -16,9 +16,16 @@ MODEL_NAME = os.getenv("MODEL_NAME", "meta-llama/Meta-Llama-3-8B-Instruct")
 DEEPINFRA_API_URL = f"https://api.deepinfra.com/v1/inference/{MODEL_NAME}"
 
 
+import os
+# ... reszta importów
+
 def load_tokens():
-    with open(TOKENS_FILE, "r") as f:
-        return json.load(f)
+    # Pobierz access token z env (sekret GitHub Actions)
+    token = os.getenv("TWITTER_ACCESS_TOKEN")
+    if not token:
+        raise RuntimeError("Brakuje TWITTER_ACCESS_TOKEN w środowisku")
+    return {"access_token": token}
+
 
 
 def choose_random_style_file():
