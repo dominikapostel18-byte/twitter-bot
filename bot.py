@@ -1,6 +1,6 @@
 import requests
 
-HF_API_KEY = "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"  # <--- wklej swój pełny token Hugging Face
+HF_API_KEY = "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"  # <--- wklej swój pełny token Hugging Face
 
 API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
 
