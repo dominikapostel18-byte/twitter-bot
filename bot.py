@@ -1,13 +1,16 @@
 import requests
 
-HF_API_KEY = "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"  # <--- wklej swój pełny token Hugging Face
+HF_API_KEY = "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"  # Twój pełny token HF
 
 API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
 
-headers = {"Authorization": f"Bearer {HF_API_KEY}"}
+headers = {
+    "Authorization": f"Bearer {HF_API_KEY}",
+    "Content-Type": "application/json"
+}
 
 data = {
-    "inputs": "Napisz krótki motywacyjny cytat o biznesie po polsku.",
+    "inputs": "Napisz krótki motywacyjny cytat o biznesie po polsku."
 }
 
 response = requests.post(API_URL, headers=headers, json=data)
