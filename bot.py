@@ -1,9 +1,7 @@
 import requests
 
-# 🔑 Wklej tutaj swój prawidłowy token Hugging Face:
-HF_API_KEY = "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"
+HF_API_KEY = "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"  # ← twój prawdziwy token Hugging Face
 
-# 🌐 Adres API Zephyra
 API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
 
 headers = {
